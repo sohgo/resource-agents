@@ -2676,9 +2676,11 @@ sub run_child
 		foreach my $r (@$real) {
 			$0 = "ldirectord $virtual_id checking $$r{server}";
 			_check_real($v, $r);
+			check_signal();
 		}
 		$0 = "ldirectord $virtual_id";
 		sleep $checkinterval;
+		check_signal();
 		ld_emailalert_resend();
 	}
 }
